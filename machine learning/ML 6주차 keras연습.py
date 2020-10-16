@@ -25,6 +25,7 @@ y_valid, y_train = y_train[:125], y_train[125:]
 #plt.imshow(x_train[0].reshape(8,8),cmap='binary')
 
 #행과열을 1,10으로 설정해서 test의 맨앞 10개를 볼수있도록 설정
+'''
 class_names = [0,1,2,3,4,5,6,7,8,9]
 n_rows = 1
 n_cols = 10
@@ -38,6 +39,7 @@ for row in range(n_rows):
         plt.title(class_names[y_test[index]], fontsize=12)
 plt.subplots_adjust(wspace=0.2, hspace=0.5)
 plt.show()
+'''
 
 #sequential모델을 만듬
 model = keras.models.Sequential([
@@ -54,3 +56,9 @@ keras.layers.Dense(10, activation="softmax")
 model.compile(loss="sparse_categorical_crossentropy",optimizer="sgd",metrics=["accuracy"])
 tb_hist = keras.callbacks.TensorBoard(log_dir='../graph', histogram_freq=0, write_graph=True, write_images=True)
 history = model.fit(x_train, y_train, epochs=30,validation_data=(x_valid, y_valid),callbacks=[tb_hist])
+'''
+pd.DataFrame(history.history).plot(figsize=(8, 5))
+plt.grid(True)
+plt.gca().set_ylim(0, 1)
+plt.show()
+'''
