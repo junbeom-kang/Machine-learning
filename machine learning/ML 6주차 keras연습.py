@@ -40,7 +40,6 @@ for row in range(n_rows):
 plt.subplots_adjust(wspace=0.2, hspace=0.5)
 plt.show()
 '''
-
 #sequential모델을 만듬
 model = keras.models.Sequential([
 keras.layers.Flatten(input_shape=[8, 8]),
