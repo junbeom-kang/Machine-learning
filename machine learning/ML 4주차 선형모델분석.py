@@ -33,7 +33,7 @@ x = np.linspace(0, 330, 100)
 #x를 0~330까지 100개로 나눠서 저장한
 y = x
 #y=x그래프를 만들기위해 y=x
-print(accuracy_score(diabetes_X_test, y_pred))
+#print(accuracy_score(diabetes_X_test, y_pred))
 
 plt.plot(x, y,'r')
 #그림을 그리위해 plot에 x,y를 넣는다
