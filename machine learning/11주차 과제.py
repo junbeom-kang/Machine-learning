@@ -29,7 +29,8 @@ testX, testY = convertToMatrix(test, step)
 trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1],1))
 testX = np.reshape(testX, (testX.shape[0],testX.shape[1],1))
 totalX=np.concatenate([trainX,testX],axis=0)
-
+trainX.shape
+trainY.shape
 model = Sequential()
 model.add(SimpleRNN(50, return_sequences=False, input_shape=(4,1)))
 model.add(Dense(1))

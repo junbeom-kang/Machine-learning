@@ -17,6 +17,7 @@ from sklearn.model_selection import train_test_split
 #데이터를 받아와서 valid와 train을 분류한다. 강의에서는 5000개로 valid를 정했지만 train크기의 1/10정도를 하시는것 같아서
 #train이 1257개라서 125로 임의로 설정하였습니다.
 digits = load_digits()
+digits
 x_data = digits.data
 y_data = digits.target
 x_train, x_test, y_train, y_test = train_test_split(x_data, y_data, test_size=0.3)
@@ -25,7 +26,7 @@ y_valid, y_train = y_train[:125], y_train[125:]
 #plt.imshow(x_train[0].reshape(8,8),cmap='binary')
 
 #행과열을 1,10으로 설정해서 test의 맨앞 10개를 볼수있도록 설정
-'''
+
 class_names = [0,1,2,3,4,5,6,7,8,9]
 n_rows = 1
 n_cols = 10
@@ -39,7 +40,7 @@ for row in range(n_rows):
         plt.title(class_names[y_test[index]], fontsize=12)
 plt.subplots_adjust(wspace=0.2, hspace=0.5)
 plt.show()
-'''
+
 #sequential모델을 만듬
 model = keras.models.Sequential([
 keras.layers.Flatten(input_shape=[8, 8]),
