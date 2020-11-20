@@ -57,9 +57,6 @@ def makemodel(X_train, y_train, X_valid, y_valid, weight_init):
     model.add(Dense(10, activation='softmax'))
 
     model.compile(loss='sparse_categorical_crossentropy',optimizer='adam',metrics=['accuracy'])
-
-
-
     return model
 
 def plot_history(histories, key='accuracy'):
