@@ -1,15 +1,11 @@
-from keras import layers
-from keras import models
-def makemodel(input_data):
-    model1 = layers.Conv2D(128, (1,1), padding='same')(input_data)
-
-    model2 = layers.Conv2D(64, (1,1), padding='same')(input_data)
-    model2 = layers.Conv2D(192, (3, 3), padding='same')(model2)
-
-    model3 = layers.Conv2D(64, (1,1), padding='same')(input_data)
-    model3 = layers.Conv2D(96, (5, 5), padding='same')(model3)
-
-    model4 = layers.MaxPooling2D((3, 3),padding='same')(input_data)
-    model4 = layers.Conv2D(64, (1, 1), padding='same')(model4)
-    return layers.concatenate([model1, model2, model3, model4], axis = -1)
-#Filter_concatenation=makemodel(Previous_Layer)
+import numpy as np
+from keras.models import Sequential
+from keras.layers.core import Activation, Dense
+training_data = np.array([[0,0],[0,1],[1,0],[1,1]], "float32")
+target_data = np.array([[0],[1],[1],[0]], "float32")
+model = Sequential()
+model.add(Dense(32, input_dim=2, activation='sigmoid'))
+model.add(Dense(1, activation='sigmoid'))
+model.compile(loss="mse", optimizer='adam', metrics=['binary_accuracy'])
+model.fit(training_data, target_data, epochs=1000, verbose=2)
+print( model.predict(training_data))

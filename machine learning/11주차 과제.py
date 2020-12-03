@@ -26,13 +26,12 @@ train = np.append(train, np.repeat(train[-1,], step))
 # 데이터 자르기
 trainX, trainY = convertToMatrix(train, step)
 testX, testY = convertToMatrix(test, step)
-trainX = np.reshape(trainX, (trainX.shape[0], trainX.shape[1],1))
-testX = np.reshape(testX, (testX.shape[0],testX.shape[1],1))
+trainX = np.reshape(trainX, (trainX.shape[0],1,trainX.shape[1]))
+testX = np.reshape(testX, (testX.shape[0],1,testX.shape[1]))
 totalX=np.concatenate([trainX,testX],axis=0)
-trainX.shape
-trainY.shape
+totalX.shape
 model = Sequential()
-model.add(SimpleRNN(50, return_sequences=False, input_shape=(4,1)))
+model.add(SimpleRNN(50, return_sequences=False, input_shape=(1,4)))
 model.add(Dense(1))
 model.summary()
 model.compile(loss='mse',optimizer='adam',metrics=['accuracy'])
